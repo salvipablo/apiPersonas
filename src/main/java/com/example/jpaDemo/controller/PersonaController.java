@@ -49,7 +49,7 @@ public class PersonaController {
     }
     
     @PutMapping ("/personas/editar/{id}")
-    public Persona editPerson(@PathVariable Long id,
+    public Response editPerson(@PathVariable Long id,
                                 @RequestParam ("nombre") String nuevoNombre,
                                 @RequestParam ("apellido") String nuevoApellido,
                                 @RequestParam ("edad") int nuevaEdad ) {
@@ -65,7 +65,9 @@ public class PersonaController {
         
         interPersona.savePersona(perso);
         
-        // Retorna la nueva persona.
-        return perso;
+        Response resp = new Response("200", "Persona actualizada "
+                                        + "correctamente");
+        
+        return resp;
     }
 }
